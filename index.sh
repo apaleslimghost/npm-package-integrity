@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
@@ -42,7 +42,11 @@ npm_package_integrity() {
 	else
 		hr
 		echoe "$NO ${GREY}$NAME@$VERSION${RESET} package is broken! files in package:"
-		ls .
+		if hash tree 2>/dev/null; then
+			tree -I node_modules
+		else
+			find . -path ./node_modules -prune -o -not -path '*/\.*' -print
+		fi
 		exit 1
 	fi
 }
