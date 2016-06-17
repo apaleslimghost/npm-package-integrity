@@ -19,7 +19,7 @@ how
 why
 ---
 
-there's a bug (npm/npm#5082) that's particularly painful in node 6 and causes missing files in your package in certain circumstances. i've been bitten by it a few times. the packages are broken enough that `require` just doesn't work, so that's a good prepublish test.
+there's a [bug](https://github.com/npm/npm/issues/5082) that's particularly painful in node 6 and causes missing files in your package in certain circumstances. i've been bitten by it a few times. the packages are broken enough that `require` just doesn't work, so that's a good prepublish test.
 
 who
 ---
