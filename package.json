@@ -1,6 +1,6 @@
 {
   "name": "npm-package-integrity",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "bin": "index.sh",
   "keywords": [],
   "author": "Matt Brennan <matt@153.io> (http://blog.153.io/)",
