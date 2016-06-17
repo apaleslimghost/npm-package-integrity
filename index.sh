@@ -18,6 +18,8 @@ readonly VERSION=$(node -pe "$PACKAGE p.version")
 readonly MAIN=$(node -pe "$PACKAGE p.main")
 readonly TGZ="$(node -pe "$PACKAGE p.name.replace(/\//g, '-').replace(/^@/, '') + '-' + p.version + '.tgz'")"
 
+readonly IS_PACK="$(node -pe "JSON.parse(process.env.npm_config_argv).cooked[0] === 'pack' ? 'true' : ''")"
+
 echoe() {
 	printf '%b\n' "$@"
 }
@@ -27,7 +29,7 @@ hr() {
 }
 
 cleanup() {
-	popd >/dev/null || {}
+	popd >/dev/null 2>&1 || :
 	rm -rf package "$TGZ"
 }
 
@@ -53,4 +55,6 @@ npm_package_integrity() {
 
 trap cleanup EXIT
 
-npm_package_integrity
+if [ "$IS_PACK" == '' ]; then
+	npm_package_integrity
+fi
